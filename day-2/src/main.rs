@@ -29,6 +29,7 @@ fn main() {
         //ensure the line was read correctly
         let line = line.expect("Unable to read line");
 
+        //Format is [Game ID][List of Games]
         let collection = line.split(":").collect::<Vec<&str>>();
 
         let id: u32 = collection[0].split(" ").collect::<Vec<&str>>()[1].parse().unwrap();
@@ -40,13 +41,17 @@ fn main() {
             blue: 0
         };
 
+        //Format is [Round 1][Round 2]...
         let rounds = collection[1].split(";").collect::<Vec<&str>>();
 
         for round in rounds {
+            //Format is [# Color][# Color]...
             let colors = round.split(", ").collect::<Vec<&str>>();
 
             for color in colors {
                 
+                //Sneaky trim() there to remove leading whitespace
+                //Format is [#][Color]
                 let cube = color.trim().split(" ").collect::<Vec<&str>>();
                 
                 if cube[1] == "red" {
