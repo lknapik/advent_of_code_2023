@@ -30,7 +30,7 @@ fn main() {
 }
 
 
-fn part_1(lines: Lines<BufReader<File>>) {
+fn part_1(lines: Lines<BufReader<File>>) -> u32{
     let mut sum = 0;
 
     for line in lines {
@@ -53,9 +53,8 @@ fn part_1(lines: Lines<BufReader<File>>) {
         }
         sum += card_points;
     }
-
-    println!("part 1: {}", sum);
-
+    
+    sum
 }
 
 struct Card {
@@ -84,7 +83,7 @@ fn count_cards(all_cards: &Vec<Card>, index: usize) -> u32 {
     card_total
 }
 
-fn part_2(lines: Lines<BufReader<File>>) {
+fn part_2(lines: Lines<BufReader<File>>) -> u32 {
     
     let mut all_cards: Vec<Card> = Vec::new();
 
@@ -108,5 +107,62 @@ fn part_2(lines: Lines<BufReader<File>>) {
         sum += count_cards(&all_cards, index);
     }
 
-    println!("part 2: {}", sum);
+    sum
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn real_part_1() {
+        let file = File::open("real.csv")
+        .expect("file not found");
+    
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_1(lines), 26346);
+    }
+
+    #[test]
+    fn real_part_2() {
+        let file = File::open("real.csv")
+        .expect("file not found");
+    
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_2(lines), 8467762);
+    }
+
+    #[test]
+    fn test_part_1() {
+        let file = File::open("test.csv")
+        .expect("file not found");
+    
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_1(lines), 13);
+    }
+
+    #[test]
+    fn test_part_2() {
+        let file = File::open("test.csv")
+        .expect("file not found");
+    
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_2(lines), 30);
+    }
 }

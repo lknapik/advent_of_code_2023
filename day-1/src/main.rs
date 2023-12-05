@@ -27,7 +27,7 @@ fn main() {
 
 }
 
-fn part_1(lines: Lines<BufReader<File>>) {
+fn part_1(lines: Lines<BufReader<File>>) -> u32{
 
     let mut sum: u32 = 0;
 
@@ -58,10 +58,10 @@ fn part_1(lines: Lines<BufReader<File>>) {
         sum += first_char.to_digit(10).unwrap() * 10 + last_char.to_digit(10).unwrap();
     }
 
-    println!("part 1: {}", sum);
+    sum
 }
 
-fn part_2(lines: Lines<BufReader<File>>) {
+fn part_2(lines: Lines<BufReader<File>>) -> u32 {
     #[derive(Debug)]
     struct HighLowStruct {
         first_number: u8,
@@ -131,6 +131,67 @@ fn part_2(lines: Lines<BufReader<File>>) {
 
         sum += (index_holder.first_number * 10 + index_holder.last_number) as u32;
     }
-    println!("part 2: {}", sum);
+    
+    sum
+}
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn real_part_1() {
+        //open file handle
+        let file = File::open("real.csv")
+        .expect("file not found");
+        
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_1(lines), 55607);
+    }
+
+    #[test]
+    fn real_part_2() {
+        //open file handle
+        let file = File::open("real.csv")
+        .expect("file not found");
+        
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_2(lines), 55291);
+    }
+
+    #[test]
+    fn test_part_1() {
+        //open file handle
+        let file = File::open("test.csv")
+        .expect("file not found");
+        
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_1(lines), 142);
+    }
+
+    #[test]
+    fn test_part_2() {
+        //open file handle
+        let file = File::open("test2.csv")
+        .expect("file not found");
+        
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
+
+        let lines  = buf_reader.lines();
+
+        assert_eq!(part_2(lines), 281);
+    }
 }
