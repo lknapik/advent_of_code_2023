@@ -8,7 +8,7 @@ Note to self in order to make a new rust project without git run: `cargo new --v
 | 2 | :white_check_mark: | :white_check_mark: |
 | 3 | :white_check_mark: | :white_check_mark: |
 | 4 | :white_check_mark: | :white_check_mark: |
-| 5 | :x: | :x: |
+| 5 | :white_check_mark: | :white_check_mark: |
 | 6 | :x: | :x: |
 | 7 | :x: | :x: |
 | 8 | :x: | :x: |
