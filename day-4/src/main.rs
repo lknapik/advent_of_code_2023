@@ -59,7 +59,7 @@ fn part_1(lines: Lines<BufReader<File>>) -> u32{
 
 struct Card {
     winning_numbers: Vec<u32>,
-    your_numbers: Vec<u32>
+    your_numbers: Vec<u32>,
 }
 
 fn count_cards(all_cards: &Vec<Card>, index: usize) -> u32 {
@@ -99,7 +99,6 @@ fn part_2(lines: Lines<BufReader<File>>) -> u32 {
 
     }
 
-    let all_cards = all_cards;
     let mut sum = 0;
 
     for index in 0..all_cards.len() {

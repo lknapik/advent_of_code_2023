@@ -147,18 +147,18 @@ mod tests {
     }
 
     //takes about 2 minutes to run
-    // #[test]
-    // fn real_part_2() {
-    //     let file = File::open("real.csv")
-    //     .expect("file not found");
+    #[test]
+    fn real_part_2() {
+        let file = File::open("real.csv")
+        .expect("file not found");
     
-    //     //create buffered reader to read line by line
-    //     let buf_reader = BufReader::new(file);
+        //create buffered reader to read line by line
+        let buf_reader = BufReader::new(file);
 
-    //     let lines  = buf_reader.lines();
+        let lines  = buf_reader.lines();
 
-    //     assert_eq!(part_2(lines), 84206669);
-    // }
+        assert_eq!(part_2(lines), 84206669);
+    }
 
     #[test]
     fn test_part_1() {
